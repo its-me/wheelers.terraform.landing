@@ -10,6 +10,7 @@ resource "google_secret_manager_secret" "smtp" {
 
   project   = var.project_id
   secret_id = "landing-smtp-${lower(replace(each.value, "_", "-"))}"
+  labels    = var.labels
 
   replication {
     auto {}

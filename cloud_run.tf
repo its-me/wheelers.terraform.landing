@@ -11,6 +11,7 @@ resource "google_cloud_run_v2_service" "server" {
   location            = var.region
   deletion_protection = false
   ingress             = "INGRESS_TRAFFIC_ALL"
+  labels              = var.labels
 
   template {
     service_account = google_service_account.cloud_run.email
