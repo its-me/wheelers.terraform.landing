@@ -1,0 +1,26 @@
+# Copy to terraform.tfvars and fill in your own values.
+#
+# This repo has no shared-infra dependency (no database, Redis, or VPC access) --
+# it only needs its own Cloud Run service to exist and be added to the shared load
+# balancer's `backends` map in terraform.infrastructure, keyed by var.domain below.
+# terraform destroy here only ever touches this app's own resources.
+
+project_id = ""
+region     = ""
+
+domain = "wheele.rs"
+
+# Optional. SMTP credentials for the contact form -- see that repo's .env.example for
+# the full set of supported keys (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD,
+# SMTP_START_TLS, SMTP_USE_TLS, MAIL_FROM, CONTACT_TO). If SMTP_HOST is left unset,
+# submissions are accepted and logged but not emailed.
+# smtp_env = {
+#   SMTP_HOST      = "smtp.example.com"
+#   SMTP_PORT      = "587"
+#   SMTP_USER      = "apikey-or-username"
+#   SMTP_PASSWORD  = "..."
+#   SMTP_START_TLS = "true"
+#   SMTP_USE_TLS   = "false"
+#   MAIL_FROM      = "Wheelers <noreply@wheele.rs>"
+#   CONTACT_TO     = "you@example.com"
+# }
